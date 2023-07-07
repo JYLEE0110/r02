@@ -1,6 +1,7 @@
 import { createSearchParams } from "react-router-dom";
 import { getList } from "../../api/boardAPI";
 import { useEffect, useState } from "react";
+import ListPageComponent from "../common/ListPageComponent";
 
 
 const initState = {
@@ -17,7 +18,7 @@ const initState = {
 
 }
 
-const ListComponent = ({ queryObj, movePage }) => {
+const ListComponent = ({ queryObj, movePage, moveRead }) => {
 
     console.log("ListComponent........................1")
 
@@ -34,39 +35,26 @@ const ListComponent = ({ queryObj, movePage }) => {
 
     }, [queryObj])
 
-    const handleClickPage = (pageNum) => {
-
-        movePage(pageNum)
-
-    }
-
     return (
 
         <div>
             <div>List Component</div>
+
             <div>
                 <ul>
-                    {listData.dtoList.map(({ bno, title, writer, replyCount }) => <li key={bno}>{bno}-{title}-{writer}-{replyCount}</li>)
+                    {listData.dtoList.map(({ bno, title, writer, replyCount }) =>
+                        <li
+                        key={bno}
+                        onClick={() => moveRead(bno)}
+                        >{bno}-{title}-{writer}-{replyCount}
+                        </li>)
                     }
                 </ul>
             </div>
 
-            <div className="flex m-4 p-2">
-                <ul className="flex">
-                    {listData.prev ? <li className="m-2 p-2 bg-blue-500 border-2 text-white font-bold"
-                    onClick={() => handleClickPage(listData.start-1)}>PREV</li> : <></>}
-
-                    {listData.pageNums.map(num =>
-                        <li
-                            className="m-2 p-2 bg-blue-500 border-2 text-white font-bold"
-                            onClick={() => handleClickPage(num)}
-                            key={num}>{num}</li>)}
-                    {listData.next ? <li className="m-2 p-2 bg-blue-500 border-2 text-white font-bold"
-                    onClick={() => handleClickPage(listData.end+1)}
-                    >NEXT</li> : <></>}
-                </ul>
-
-            </div>
+            {/* ListPage에서 props로 받은 movePage를 다시 하위 컴포넌트인 PageComponent에도 전달 */}
+            {/* PageResponseDTO(결과 값) => listData를 spread연산자로 내려줌 */}
+            <ListPageComponent movePage={movePage} {...listData} ></ListPageComponent>
 
         </div>
 

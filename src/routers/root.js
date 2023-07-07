@@ -10,6 +10,7 @@ import LoadingPage from "../pages/LoadingPage";
 const Loading = <LoadingPage></LoadingPage>
 const Board_Index = lazy(() => import("../pages/board/IndexPage"))
 const Board_List = lazy(() => import("../pages/board/ListPage"))
+const Board_Read = lazy(() => import("../pages/board/ReadPage"))
 
 const router = createBrowserRouter([
 
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
             {
                 path: "list",
                 element: <Suspense fallback={Loading}><Board_List></Board_List></Suspense>
+            },
+            {
+                path: "read/:bno",
+                element: <Suspense fallback={Loading}><Board_Read></Board_Read></Suspense>
             }
         ]
     }

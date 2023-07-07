@@ -1,61 +1,44 @@
-import { useSearchParams } from "react-router-dom";
+import { createSearchParams, useNavigate, useSearchParams } from "react-router-dom";
 import ListComponent from "../../components/board/ListComponent";
-
-
-const checkNull = (obj) => {
-
-    const result = {}
-  
-    // 객체 = in / 배열 = of
-    // obj =>{page, size, type, keyword}
-    for (const attr in obj) {
-        // property(page, size, type, keyword) in obj
-      const attrName = attr
-      const attrValue = obj[attr]
-  
-      if( attrValue && attrValue !== 'null'){
-        result[attrName] = attrValue
-      }
-    }
-  
-    return result
-  }
-
+import ListSearchComponent from "../../components/board/ListSearchComponent";
+import useQueryObj from "../../hooks/useQueryObj";
 
 const ListPage = () => {
 
-    console.log("List Page....................................")
+  console.log("List Page....................................")
 
-    // 쿼리스트링 처리
-    const [search, setSearch] = useSearchParams()
+  // 필요한 것만  => 객체
+  const {queryObj, setSearch, moveRead} = useQueryObj();
 
-    console.log(search)
-    
-    // || => 없으면 1
-    const page = search.get("page") || 1
-    const size = search.get("size") || 10
-    const type = search.get("type")
-    const keyword = search.get("keyword")
+  console.log(useQueryObj())
 
-    const queryObj = checkNull({page, size, type, keyword})
+  const movePage = (num) => {
 
-    console.log("queryObj : ",queryObj)
+    console.log("NUM------------" + num)
+    queryObj.page = num
+    setSearch({ ...queryObj })
+  }
 
-    const movePage = (num) => {
+  // 검색 시
+  const moveSearch = (type, keyword) => {
 
-        console.log("NUM------------" + num)
-        queryObj.page = num
-        setSearch({...queryObj})
-    }
+    // 검색 후 page = 1
+    queryObj.page = 1
+    queryObj.type = type
+    queryObj.keyword = keyword
 
-    return (
-        
-        <div>
-            Board List Page
-            <ListComponent queryObj={queryObj} movePage={movePage}></ListComponent>
-        </div>
+    setSearch({ ...queryObj })
+  }
 
-     );
+  return (
+
+    <div>
+      Board List Page
+      <ListSearchComponent queryObj={queryObj} moveSearch={moveSearch}></ListSearchComponent>
+      <ListComponent queryObj={queryObj} movePage={movePage} moveRead={moveRead} ></ListComponent>
+    </div>
+
+  );
 }
- 
+
 export default ListPage;
