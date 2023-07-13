@@ -59,10 +59,21 @@ const useQueryObj = () => {
         navigate(`../read/${bno}?${queryString}`)
 
     }
+    const moveModify = (bno) => {
+
+        console.log("moveModify: " + bno)
+
+        // read 페이지 이동 시 queryString이 따라 붙어야한다. 
+        const queryString = createSearchParams(queryObj).toString()
+
+        // board / product 등이 들어올 수 있으니 ../로 처리
+        navigate(`../modify/${bno}?${queryString}`)
+
+    }
 
 
     // queryObj : queryObj....
-    return {queryObj, setSearch, moveRead, moveList}
+    return {queryObj, setSearch, moveRead, moveList, moveModify}
 
 }
 

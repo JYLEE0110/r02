@@ -20,7 +20,7 @@ const ListSearchComponent = ({ queryObj, moveSearch }) => {
 
     return (
 
-        <div className="m-4 p-4 bg-blue-300 border-2">
+        <div className="m-4 p-4 bg-gray-100 border-2">
 
             {/* QueryObject 필요함 */}
             <select 
@@ -42,7 +42,7 @@ const ListSearchComponent = ({ queryObj, moveSearch }) => {
             </select>
 
             <input type='text'
-                className="border-2 m-2 p-2"
+                className="rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 value = {searchObj.keyword}
                 onChange = {e => {
                     searchObj.keyword = e.target.value

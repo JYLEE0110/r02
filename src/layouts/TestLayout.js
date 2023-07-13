@@ -5,7 +5,7 @@ const TestLayout = ({children}) => {
 
         <div>
             <div>
-                <h2><Link to={"/"}>Main</Link></h2>
+                <h2 ><Link to={"/"}>Main</Link></h2>
                 <h2><Link to={"/about"}>About</Link></h2>
             </div>
             <div>
