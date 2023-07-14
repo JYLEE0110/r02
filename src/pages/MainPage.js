@@ -1,3 +1,4 @@
+import TodoList from "../components/todo/TodoList";
 import BasicLayout from "../layouts/BasicLayout";
 
 const MainPage = () => {
@@ -8,6 +9,7 @@ const MainPage = () => {
 
         <BasicLayout>
             <h2>Main Page</h2>
+            <TodoList></TodoList>
         </BasicLayout>
 
      );

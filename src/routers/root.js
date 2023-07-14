@@ -18,6 +18,8 @@ const Products_Register = lazy(() => import("../pages/products/RegisterPage"))
 const Products_Read = lazy(() => import("../pages/products/ReadPage"))
 const Products_Modify = lazy(() => import("../pages/products/ModifyPage"))
 
+const Member_Login = lazy(() => import("../pages/member/LoginPage"))
+
 const router = createBrowserRouter([
 
     {
@@ -27,6 +29,10 @@ const router = createBrowserRouter([
     {
         path:"about",
         element: <AboutPage></AboutPage>
+    },
+    {
+        path:"member/login",
+        element: <Suspense fallback={Loading}><Member_Login/></Suspense>,
     },
     {
         /* React는 페이지를 한번에 다 가져오는데 부하를 줄이기 위해 필요할때 가져오게 suspence설정을 해준다. */
