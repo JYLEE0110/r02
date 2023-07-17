@@ -16,7 +16,7 @@ const useCustomLogin = (fn) => {
 
         // 로그인 전 useCustomLogin()에 함수로 파라미터가 있을 시
         if (fn) {
-            if (!loginInfo.signed) {
+            if (!loginInfo.email) {
                 // navigate 전달
                 // 수정페이지 로그인 여부 체크
                 fn(navigate)
@@ -27,11 +27,11 @@ const useCustomLogin = (fn) => {
 
         // signed가 바뀔떄 
         // 로그인이 안되었으면 로그인 페이지로 튕겨냄
-        if (!loginInfo.signed) {
+        if (!loginInfo.email) {
             navigate("/member/login")
         }
 
-    }, [loginInfo.sign])
+    }, [loginInfo.email])
 
     // 객체로 반환하고 원하는 값만 
     return { loginInfo }

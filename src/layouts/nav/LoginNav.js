@@ -1,17 +1,39 @@
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import CartNav from "./CartNav";
+import { useEffect } from "react";
+import { removeCookie } from "../../util/cookieUtil";
+import { requestLogout } from "../../reducers/loginSlice";
 
 const LoginNav = () => {
 
-    const { email, signed } = useSelector(state => state.login)
+    const { email, nickname, loading } = useSelector(state => state.login)
 
-    console.log("LoginNav..", email, signed)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
-    if (signed) {
+    console.log("LoginNav..", email, loading)
+
+    const handleLogout = () => {
+
+        dispatch(requestLogout())
+        console.log('Logout===================')
+        console.log(email)
+        navigate(`/`)
+
+    }
+
+
+    // 이메일이 있을 시
+    if (email !== '') {
 
         return (
             <div>
-                {email}
+                <div>
+                    {nickname}
+                    <button onClick={handleLogout}>LOGOUT</button>
+                </div>
+                <CartNav></CartNav>
             </div>
         )
 
@@ -20,7 +42,8 @@ const LoginNav = () => {
     return (
 
         <div>
-            <Link to="/member/login">LOGIN</Link>
+            <Link to="/member/login">LOGIN {email}sdf</Link>
+
         </div>
 
     );
