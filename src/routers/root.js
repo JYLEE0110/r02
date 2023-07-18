@@ -6,6 +6,7 @@ import IndexPage from "../pages/board/IndexPage";
 
 import { Suspense, lazy } from "react";
 import LoadingPage from "../pages/LoadingPage";
+import KakaoRedirectPage from "../pages/member/KakaoRedirectPage";
 
 const Loading = <LoadingPage></LoadingPage>
 const Board_Index = lazy(() => import("../pages/board/IndexPage"))
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
     {
         path:"member/login",
         element: <Suspense fallback={Loading}><Member_Login/></Suspense>,
+    },
+    {
+        path:"member/kakao",
+        element: <KakaoRedirectPage></KakaoRedirectPage>
     },
     {
         /* React는 페이지를 한번에 다 가져오는데 부하를 줄이기 위해 필요할때 가져오게 suspence설정을 해준다. */
