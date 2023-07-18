@@ -30,7 +30,7 @@ const LoginNav = () => {
         return (
             <div>
                 <div>
-                    {nickname}
+                    {email}
                     <button onClick={handleLogout}>LOGOUT</button>
                 </div>
                 <CartNav></CartNav>

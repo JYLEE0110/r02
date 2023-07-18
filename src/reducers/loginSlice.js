@@ -31,16 +31,15 @@ const loginSlice = createSlice({
     name: 'loginSlice',
     initialState: loadCookie(),
     reducers: {
-        // requestLogin: (state, param) => {
-        //     const payload = param.payload
-        //     console.log("requestLogin", payload)
-        //     const loginObj = { email: payload.email, signed: true }
+        requestLogin: (state, action) => {
+            const payload = action.payload
+            console.log("requestLogin", payload)
 
-        //     // 쿠키는 문자열 이므로 stringify로 객체를 문자열로 변환
-        //     setCookie("login", JSON.stringify(loginObj), 1)
+            // 쿠키는 문자열 이므로 stringify로 객체를 문자열로 변환
+            setCookie("login", JSON.stringify(payload), 1)
 
-        //     return loginObj
-        // }
+            return payload
+        },
 
         requestLogout: (state) => {
             // state 에있는 내용을 clean / main페이지로 이동
@@ -89,6 +88,7 @@ const loginSlice = createSlice({
 
 // 외부에서 사용
 export const {requestLogout} = loginSlice.actions
+export const { requestLogin } = loginSlice.actions
 
 // 함수 안에서 비동기 호출 파라미터가 있으므로 람다식으로 처리
 export const postLoginThunk =

@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 
 // 로그인 버튼누를시 쿼리스트링으로 붙여야한다.
 const REST_KEY = `f22967614a3ff3efdebdcd707623cd5e`
+
+// spring controller에서 받음
 const REDIRECT_URI = `http://localhost:3000/member/kakao`
 
 // 로그인버튼 누를 시 호출되는 URL
