@@ -10,6 +10,12 @@ const MainPage = () => {
         <BasicLayout>
             <h2>Main Page</h2>
             <TodoList></TodoList>
+            <div>
+                <div></div>                
+                <div></div>                
+                <div></div>                
+                <div></div>                
+            </div>
         </BasicLayout>
 
      );

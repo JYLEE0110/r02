@@ -24,7 +24,7 @@ const LoginComponent = () => {
         <div className="h-full bg-slate-100">
             {/* 모달로 처리 해야한다. 동작중에 버튼을 계속 못 누르게 처리 */}
             <div className="text-3xl bg-red-500">
-                Loading : {loginState.loading ? '로그인 중' : ''} 
+                {loginState.loading ? 'Loading : 로그인 중' : ''} 
             </div>
 
             {errorMsg ? <div className="text-3xl bg-red-500">이메일과 패스워드를 다시 확인해 주세요</div> : <></>}

@@ -41,7 +41,7 @@ const ListComponent = ({ queryObj, movePage, moveRead }) => {
             <div className="pl-5">
                 <ul role="list" className="divide-y divide-gray-100 flex flex-wrap container justify-center">
                     {listData.dtoList.map(({ pno, pname, price, fname, reviewCnt, reviewAvg }) => (
-                        <li key={pno} onClick={() => moveRead(pno)} className=" w-2/5 h-[300px] m-2 p-2 rounded-md shadow-lg bg-gray-100" >
+                        <li key={pno} onClick={() => moveRead(pno)} className=" w-1/5 h-[300px] m-2 p-2 rounded-md shadow-lg bg-gray-100" >
                             <div >
 
                                 <div className="text-white font-extrabold">

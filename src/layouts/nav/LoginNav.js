@@ -7,7 +7,7 @@ import { requestLogout } from "../../reducers/loginSlice";
 
 const LoginNav = () => {
 
-    const { email, nickname, loading } = useSelector(state => state.login)
+    const { email, nickname, loading, accessToken } = useSelector(state => state.login)
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -30,7 +30,7 @@ const LoginNav = () => {
         return (
             <div>
                 <div>
-                    {email}
+                    {email} {accessToken}
                     <button onClick={handleLogout}>LOGOUT</button>
                 </div>
                 <CartNav></CartNav>
@@ -42,7 +42,7 @@ const LoginNav = () => {
     return (
 
         <div>
-            <Link to="/member/login">LOGIN {email}sdf</Link>
+            <Link to="/member/login">LOGIN</Link>
 
         </div>
 

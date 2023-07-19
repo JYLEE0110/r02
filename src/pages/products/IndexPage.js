@@ -12,7 +12,7 @@ const IndexPage = () => {
                     <Link to={'register'}>Register</Link>
                 </div>
             </div>
-            <div className="h-[50vh] bg-white w-full border-2">
+            <div className="">
                 <Outlet></Outlet>
             </div>
         </BasicLayout>

@@ -35,7 +35,7 @@ const useQueryObj = () => {
     console.log(search)
     // || => 없으면 1
     const page = search.get("page") || 1
-    const size = search.get("size") || 10
+    const size = search.get("size") || 12
     const type = search.get("type")
     const keyword = search.get("keyword")
 

@@ -24,7 +24,8 @@ const initState = {
     admin: false,
     loading: false,
     // 에러 메세지
-    errorMsg: null
+    errorMsg: null,
+    accessToken: ''
 }
 
 const loginSlice = createSlice({
@@ -65,13 +66,16 @@ const loginSlice = createSlice({
                 return
             }
 
-            state.email = email
-            state.nickname = nickname
-            state.admin = admin
-            state.loading = false
+            // state = action.payload
+
+            // state.email = email
+            // state.nickname = nickname
+            // state.admin = admin
+            // state.loading = false
 
             // 쿠키는 문자열 이므로 stringify로 객체를 문자열로 변환
             setCookie("login", JSON.stringify(action.payload), 1)
+            return {...action.payload, loading:false}
         })
 
             .addCase(postLoginThunk.pending, (state, aciton) => {

@@ -17,7 +17,6 @@ const ListPage = () => {
     return ( 
 
         <div className="text-3xl">
-            Products List PAge
             <ListComponent queryObj={queryObj} movePage={movePage} moveRead={moveRead} ></ListComponent>
         </div>
 
