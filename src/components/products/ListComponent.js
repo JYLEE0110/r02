@@ -28,9 +28,14 @@ const ListComponent = ({ queryObj, movePage, moveRead }) => {
 
         console.log("List component...useEffect..................")
 
+        // refreshToken 만료됬을 시 새로고침할때 Catch로 처리
         getList(queryObj).then(data => {
             console.log(data)
             setListData(data)
+        }).catch(err => {
+            console.log("----------------")
+            console.log(err)
+            console.log("================")
         })
 
     }, [queryObj])

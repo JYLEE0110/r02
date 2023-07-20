@@ -36,7 +36,6 @@ const beforeRes = async (res) => {
 
         console.log("AccessToken has expired")
         
-        
         // 새로운 AccessToken값 받아옴
         const newAccessToken = await refreshJWT()
 
